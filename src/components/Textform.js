@@ -15,6 +15,12 @@ export default function Textform() {
   const decpaitalize=(()=>{
     settext(text.toLowerCase());
   })
+  const Ctext=(()=>{
+    settext('');
+  })
+  const RWspace=(()=>{
+    settext(text.trim());
+  })
 
   const cp=(()=>{
     navigator.clipboard.writeText(text);
@@ -22,10 +28,10 @@ export default function Textform() {
   return (
     <div>
       <div className="form-floating">
-  <textarea className="form-control my-3 mx-auto border border-warning" placeholder="Leave a comment here" id="floatingTextarea2" value={text} onChange={y1} style={{height: "100px", width:"1000px"}}></textarea>
+  <textarea className="form-control my-3 mx-auto border border-warning" placeholder="Leave a comment here" id="floatingTextarea2" value={text} onChange={y1} style={{height: "160px", width:"1000px"}}></textarea>
 
  <div className="d-flex justify-content-center">
- <p className="mx-2"> Word Count : {text.split(" ").length-1}</p>
+ <p className="mx-2"> Word Count : {text.split(" ").filter((element)=>{return element.length>0}).length}</p>
 <p className="mx-2"> letter Count : {text.length}</p>
 
 
@@ -42,10 +48,12 @@ export default function Textform() {
  
 </div>
 
-<div className='d-flex justify-content-center'>
-<button className="btn btn-primary mx-2 my-3 " onClick={cp} >Copy Text</button>
-<button className="btn btn-primary mx-2 my-3"  onClick={cpaitalize}>Capitalize Text</button>
-<button className="btn btn-primary mx-2 my-3" onClick={decpaitalize}>LowerCase Text </button>
+<div  className='d-flex justify-content-center'>
+<button disabled={text.length===0} className="btn btn-primary mx-2 my-3 " onClick={cp} >Copy Text</button>
+<button disabled={text.length===0} className="btn btn-primary mx-2 my-3"  onClick={cpaitalize}>Capitalize Text</button>
+<button disabled={text.length===0} className="btn btn-primary mx-2 my-3" onClick={decpaitalize}>LowerCase Text </button>
+<button disabled={text.length===0} className="btn btn-primary mx-2 my-3" onClick={Ctext}>Clear Text </button>
+<button disabled={text.length===0} className="btn btn-primary mx-2 my-3" onClick={RWspace}>Remove Extra Spaces </button>
 </div>
     </div>
   )

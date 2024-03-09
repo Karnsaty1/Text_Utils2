@@ -13,7 +13,7 @@ const [darkmode, setdarkmode]=useState(false);
 
 const toggleMode=(()=>{
   if(!darkmode){
-    document.body.style.backgroundColor="#464242";
+    document.body.style.backgroundColor="rgb(3 12 50)";
     document.body.style.color="white";
 
   }
